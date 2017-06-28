@@ -4,7 +4,7 @@ namespace ArrayAndListAlgorithms
     using System;
     using System.Linq;
     using System.Collections.Generic;
-    using System.Text;
+    
 
     public class Program
     {
@@ -23,11 +23,93 @@ namespace ArrayAndListAlgorithms
             //AverageCharacterDelimiter();
             //SortArrayOfStrings();
             //ArrayHistogram();
+            //DecodeRadioFrequencies();
+            //Batteries();
 
-            
             
 
             Console.WriteLine();
+        }
+
+        private static void Batteries()
+        {
+            var capacitiesOfBatteries = Console.ReadLine()
+                .Split(' ')
+                .Select(double.Parse)
+                .ToArray();
+
+            var usagePerHour = Console.ReadLine()
+                .Split(' ')
+                .Select(double.Parse)
+                .ToArray();
+
+            var stressTestHours = int.Parse(Console.ReadLine());
+
+            var testResulst = new List<int>();
+
+            for (int i = 0; i < capacitiesOfBatteries.Length; i++)
+            {
+                double drainedEnergy, restOfEnergy, percentage, lastHours;
+                int numOftestedBattery;
+                BatteryDiagnostic(capacitiesOfBatteries, usagePerHour, stressTestHours, i, out drainedEnergy, out numOftestedBattery, out restOfEnergy, out percentage, out lastHours);
+
+                if (capacitiesOfBatteries[i] % usagePerHour[i] > 0)
+                {
+                    lastHours++;
+                }
+
+                if (drainedEnergy > capacitiesOfBatteries[i])
+                {
+                    Console.WriteLine($"Battery {numOftestedBattery}: dead (lasted {(int)lastHours} hours)");
+                }
+                else
+                {
+                    Console.WriteLine($"Battery {numOftestedBattery}: {restOfEnergy} mAh ({percentage:F2})%");
+                }
+            }
+
+
+        }
+
+        private static void BatteryDiagnostic(double[] capacitiesOfBatteries, double[] usagePerHour, int stressTestHours, int i, out double drainedEnergy, out int numOftestedBattery, out double restOfEnergy, out double percentage, out double lastHours)
+        {
+            drainedEnergy = stressTestHours * usagePerHour[i];
+            numOftestedBattery = i + 1;
+            restOfEnergy = capacitiesOfBatteries[i] - drainedEnergy;
+            percentage = (restOfEnergy / capacitiesOfBatteries[i]) * 100;
+            lastHours = (int)capacitiesOfBatteries[i] / usagePerHour[i];
+        }
+
+        private static void DecodeRadioFrequencies()
+        {
+            var inputedNumbers = Console.ReadLine().Split(' ', '.').Select(int.Parse).ToArray();
+            var decodedStringFirst = new List<string>();
+            var decodedStringSecond = new List<string>();
+
+            for (int i = 0; i < inputedNumbers.Length; i++)
+            {
+                var currentChar = ((char)inputedNumbers[i]).ToString();
+
+                if (inputedNumbers[i] == 0)
+                {
+                    continue;
+                }
+                else
+                {
+                    if (i % 2 == 0)
+                    {
+                        decodedStringFirst.Add(currentChar);                        
+                    }                    
+                    else
+                    {                        
+                        decodedStringSecond.Insert(0, currentChar);                        
+                    }
+
+                }
+            }
+                        
+            Console.WriteLine(string.Join("", decodedStringFirst) + string.Join("", decodedStringSecond));
+
         }
 
         private static void ArrayHistogram()
