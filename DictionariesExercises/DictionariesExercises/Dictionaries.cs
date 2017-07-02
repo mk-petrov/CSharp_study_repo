@@ -13,11 +13,185 @@ namespace DictionariesExercises
 
             //CountRealNumbers();
             //PrintOddTimesMetedWords();
+            //LetterRepetition();
+            //DictRef();
+            //MixedPhones();
+            //ExamShopping();
                     
                         
             //TryParseMethod();
             //OldEnoughToDrive();
 
+        }
+
+        private static void ExamShopping()
+        {
+            var inventory = new Dictionary<string, int>();
+            var line = Console.ReadLine();
+
+            while (!line.Equals("exam time"))
+            {
+                var input = line.Split(new char[] { ' ' }, StringSplitOptions.RemoveEmptyEntries);
+                var command = input[0];
+                var product = input[1];
+                var lastElement = input[input.Length - 1];
+                int quantity;
+                if (int.TryParse(lastElement, out quantity))
+                {
+
+                }
+
+                switch (command)
+                {
+                    
+                    case "stock":
+                                                
+                        if (inventory.ContainsKey(product))
+                        {
+                            var temp = inventory[product];
+                            inventory[product] = temp + quantity;
+                        }
+                        else
+                        {
+                            inventory[product] = quantity;
+                        }
+                        
+                        break;
+
+                    case "shopping time":
+                        continue;
+
+                    case "buy":
+
+                        if (inventory.ContainsKey(product))
+                        {
+                            var stockQuantity = inventory[product];
+                            stockQuantity -= quantity;
+
+                            if (stockQuantity < 0)
+                            {
+                                stockQuantity = 0;
+                            }
+
+                            inventory[product] = stockQuantity;
+                        }
+                        else
+                        {
+                            Console.WriteLine($"{product} doesn't exist");
+                        }
+                        break;
+
+                                                                
+                }                               
+
+                line = Console.ReadLine();
+            }
+
+            Console.WriteLine();
+
+            foreach (var kvp in inventory)
+            {
+                if (kvp.Value <= 0)
+                {
+                    continue;
+                }
+                Console.WriteLine($"{kvp.Key} -> {kvp.Value}");
+            }
+
+            Console.WriteLine();
+        }
+
+        private static void MixedPhones()
+        {
+            var mixedPhones = new SortedDictionary<string, decimal>();
+            var line = Console.ReadLine();
+
+            while (!line.Equals("Over"))
+            {
+                var inputedString = line.Split(new char[] { }, StringSplitOptions.RemoveEmptyEntries);
+                var firstElement = inputedString[0];
+                var lastElement = inputedString[inputedString.Length - 1];
+
+                decimal number;
+                if (decimal.TryParse(lastElement, out number))
+                {
+                    mixedPhones[firstElement] = number;
+                }
+                else if (decimal.TryParse(firstElement, out number))
+                {
+                    mixedPhones[lastElement] = number;
+                }
+                else
+                {
+                    Console.WriteLine("Not valid input");
+                    Console.WriteLine("Required format: Name : phone");
+                }
+                
+                line = Console.ReadLine();
+            }
+
+            foreach (var kvp in mixedPhones)
+            {
+                Console.WriteLine($"{kvp.Key} -> {kvp.Value}");
+            }
+        }
+
+        private static void DictRef()
+        {
+            var resultDict = new Dictionary<string, int>();
+            var line = Console.ReadLine();
+            
+
+            while (!line.Equals("end"))
+            {
+                var tokens = line.Split();
+                var firstElement = tokens[0];
+                var lastElement = tokens[tokens.Length - 1];
+
+                var number = 0;
+                if (int.TryParse(lastElement, out number))
+                {
+                    resultDict[firstElement] = number;
+                }
+                else
+                {
+                    if (resultDict.ContainsKey(lastElement))
+                    {
+                        var referencedValue = resultDict[lastElement];
+                        resultDict[firstElement] = referencedValue;
+                    }
+                }
+
+                line = Console.ReadLine();
+            }
+
+            foreach (var kvp in resultDict)
+            {
+                Console.WriteLine($"{kvp.Key} === {kvp.Value}");
+            }
+            
+        }
+
+        private static void LetterRepetition()
+        {
+            var inputedWord = Console.ReadLine();
+
+            var letters = new Dictionary<char, int>();
+
+            foreach (var character in inputedWord)
+            {
+                if (!letters.ContainsKey(character))
+                {
+                    letters[character] = 0;
+                }
+
+                letters[character]++;
+            }
+
+            foreach (var letter in letters)
+            {
+                Console.WriteLine($"{letter.Key} -> {letter.Value}");
+            }
         }
 
         private static void PrintOddTimesMetedWords()
