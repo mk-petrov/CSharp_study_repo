@@ -17,12 +17,59 @@ namespace DictionariesExercises
             //DictRef();
             //MixedPhones();
             //ExamShopping();
-                    
-                        
+            UserLogins();
+
+
             //TryParseMethod();
             //OldEnoughToDrive();
 
         }
+
+        private static void UserLogins()
+        {
+            var user = new Dictionary<string, string>();
+            var line = Console.ReadLine();
+            var loginAttempts = 0;
+            bool isLoggingTime = false;
+
+            while (!line.Equals("end"))
+            {
+                if (line == "login")
+                {
+                    isLoggingTime = true;
+                    line = Console.ReadLine();
+                }
+                var tokens = line.Split(new char[] { ' ' }, StringSplitOptions.RemoveEmptyEntries);
+                var userName = tokens[0];
+                var userPass = tokens[2];
+
+                if (isLoggingTime)
+                {
+                    if (user.ContainsKey(userName) && user[userName] == userPass)
+                    {
+                        Console.WriteLine($"{userName} logged in successfully");
+                    }
+                    else
+                    {
+                        Console.WriteLine($"{userName} login failed");
+                        loginAttempts++;
+                    }
+                    
+                }
+
+                else
+                {                   
+                    user[userName] = userPass;
+                }
+
+                line = Console.ReadLine();                
+            }
+
+            Console.WriteLine($"unsuccessful login attempts: {loginAttempts}");
+            
+        }
+
+        
 
         private static void ExamShopping()
         {
