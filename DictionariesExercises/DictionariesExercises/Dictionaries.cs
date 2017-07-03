@@ -17,12 +17,91 @@ namespace DictionariesExercises
             //DictRef();
             //MixedPhones();
             //ExamShopping();
-            UserLogins();
+            //UserLogins();
+            //FilterBase();
+            
 
 
             //TryParseMethod();
             //OldEnoughToDrive();
 
+        }
+
+        private static void FilterBase()
+        {
+            var baseAge = new Dictionary<string, int>();            
+            var baseSalary = new Dictionary<string, double>();
+            var basePosition = new Dictionary<string, string>();
+
+            var line = Console.ReadLine();
+
+            while (!line.Equals("filter base"))
+            {
+                var tokens = line.Split(new char[]
+                { ' ' }, StringSplitOptions.RemoveEmptyEntries);
+
+                var name = tokens[0];
+                var baseInfo = tokens[tokens.Length - 1];
+                int age;
+                double salary;
+                string position;
+
+                if (int.TryParse(baseInfo, out age))
+                {
+                    baseAge[name] = age;
+                }
+                else if (double.TryParse(baseInfo, out salary))
+                {
+                    baseSalary[name] = salary;
+                }
+                else
+                {
+                    position = baseInfo;
+                    basePosition[name] = position; 
+                }
+
+
+                line = Console.ReadLine();
+            }
+
+            var baseFilter = Console.ReadLine();
+            
+
+            switch (baseFilter)
+            {
+                case "Age":
+
+                    foreach (var kvp in baseAge)
+                    {
+                        Console.WriteLine($"Name: {kvp.Key}");
+                        Console.WriteLine($"Age: {kvp.Value}");
+                        Console.WriteLine("====================");
+                    }
+
+                    break;
+
+                case "Salary":
+
+                    foreach (var kvp in baseSalary)
+                    {
+                        Console.WriteLine($"Name: {kvp.Key}");
+                        Console.WriteLine($"Salary: {kvp.Value:F2}");
+                        Console.WriteLine("====================");
+                    }
+
+                    break;
+
+                case "Position":
+
+                    foreach (var kvp in basePosition)
+                    {
+                        Console.WriteLine($"Name: {kvp.Key}");
+                        Console.WriteLine($"Position: {kvp.Value}");
+                        Console.WriteLine("====================");
+                    }
+
+                    break;
+            }
         }
 
         private static void UserLogins()
@@ -68,9 +147,7 @@ namespace DictionariesExercises
             Console.WriteLine($"unsuccessful login attempts: {loginAttempts}");
             
         }
-
-        
-
+                
         private static void ExamShopping()
         {
             var inventory = new Dictionary<string, int>();
