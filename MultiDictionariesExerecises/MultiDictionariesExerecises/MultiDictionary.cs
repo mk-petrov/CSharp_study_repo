@@ -12,12 +12,76 @@ namespace MultiDictionariesExerecises
         {
             //Every method represents a small problem
 
-            AverageStudentGrades();
+            //AverageStudentGrades();
+            //CitiesByContinentAndCountry();
 
-                      
 
 
+            //NestedDictionary();
             //FillDictionary();
+        }
+
+        private static void NestedDictionary()
+        {
+            var countryAndPopulation = 
+                new Dictionary<string, Dictionary<string, int>>();
+
+            var line = Console.ReadLine();
+
+            while (!line.Equals("end"))
+            {
+                var tokens = line.Split(new char[] { ' ' },
+                    StringSplitOptions.RemoveEmptyEntries);
+
+                var country = tokens[0];
+                var city = tokens[1];
+                var population = int.Parse(tokens[2]);
+
+                if (! countryAndPopulation.ContainsKey(country))
+                {
+                    countryAndPopulation[country] = new Dictionary<string, int>();
+                }
+
+                countryAndPopulation[country][city] = population;
+
+                line = Console.ReadLine();
+            }
+
+            foreach (var item in countryAndPopulation)
+            {                
+                foreach (var kvp in item.Value)
+                {
+                    Console.WriteLine($"{item.Key} -> {kvp.Key} -> {kvp.Value}");
+                }
+            }
+        }
+
+        private static void CitiesByContinentAndCountry()
+        {
+            var cities = new Dictionary<string, Dictionary<string, string>>();
+            var count = int.Parse(Console.ReadLine());
+
+            for (int i = 0; i < count; i++)
+            {
+                var tokens = Console.ReadLine().Split(new char[] { ' ' },
+                    StringSplitOptions.RemoveEmptyEntries);
+
+                var continent = tokens[0];
+                var country = tokens[1];
+                var city = tokens[2];
+
+                if ( ! cities.ContainsKey(continent))
+                {
+                    cities[continent] = new Dictionary<string, string>();
+                }
+
+                
+                
+            }
+
+
+
+
         }
 
         private static void AverageStudentGrades()
