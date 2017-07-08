@@ -15,7 +15,7 @@ namespace MultiDictionariesExerecises
             //AverageStudentGrades();
             //CitiesByContinentAndCountry();
 
-
+            
 
             //NestedDictionary();
             //FillDictionary();
@@ -58,7 +58,7 @@ namespace MultiDictionariesExerecises
 
         private static void CitiesByContinentAndCountry()
         {
-            var cities = new Dictionary<string, Dictionary<string, string>>();
+            var cities = new Dictionary<string, Dictionary<string, List<string>>>();
             var count = int.Parse(Console.ReadLine());
 
             for (int i = 0; i < count; i++)
@@ -72,14 +72,28 @@ namespace MultiDictionariesExerecises
 
                 if ( ! cities.ContainsKey(continent))
                 {
-                    cities[continent] = new Dictionary<string, string>();
+                    cities[continent] = new Dictionary<string, List<string>>();                    
+                }
+                                
+                if (!cities[continent].ContainsKey(country))
+                {
+                    cities[continent][country] = new List<string>();
                 }
 
-                
+                cities[continent][country].Add(city);
                 
             }
 
+            Console.WriteLine();
+            foreach (var continent in cities)
+            {
+                Console.WriteLine("{0}:", continent.Key);
 
+                foreach (var country in continent.Value)
+                {
+                    Console.WriteLine($"  {country.Key} -> {string.Join(", ", country.Value)}");
+                }
+            }
 
 
         }
