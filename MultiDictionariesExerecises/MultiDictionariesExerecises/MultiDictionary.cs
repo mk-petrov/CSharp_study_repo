@@ -16,11 +16,43 @@ namespace MultiDictionariesExerecises
             //CitiesByContinentAndCountry();
             //RecordUniqueNames();
             //GroupContinentsCounriesAndCities();
+            //ShellBound();
 
             
 
             //NestedDictionary();
             //FillDictionary();
+        }
+
+        private static void ShellBound()
+        {
+            var regionData = new Dictionary<string, HashSet<int>>();
+            var line = Console.ReadLine();
+
+            while (! line.Equals("Aggregate"))
+            {
+                var tokens = line.Split(' ');
+                var regionName = tokens[0];
+                var shell = int.Parse(tokens[1]);
+
+                if (! regionData.ContainsKey(regionName))
+                {
+                    regionData[regionName] = new HashSet<int>();
+                }
+
+                regionData[regionName].Add(shell);
+
+                line = Console.ReadLine();
+            }
+
+            Console.WriteLine();
+            foreach (var region in regionData)
+            {
+                Console.WriteLine($"{region.Key} -> {string.Join(", ", region.Value)}" +
+                    $" ({Math.Round(region.Value.Sum() - region.Value.Average())})");
+            }
+
+            Console.WriteLine();
         }
 
         private static void GroupContinentsCounriesAndCities()
