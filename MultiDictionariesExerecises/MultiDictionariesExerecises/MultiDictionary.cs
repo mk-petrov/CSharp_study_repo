@@ -14,11 +14,78 @@ namespace MultiDictionariesExerecises
 
             //AverageStudentGrades();
             //CitiesByContinentAndCountry();
+            //RecordUniqueNames();
+            //GroupContinentsCounriesAndCities();
 
             
 
             //NestedDictionary();
             //FillDictionary();
+        }
+
+        private static void GroupContinentsCounriesAndCities()
+        {
+            var continentData =
+                new SortedDictionary<string, SortedDictionary<string, SortedSet<string>>>();
+
+            var inputLine = int.Parse(Console.ReadLine());
+
+            for (int i = 0; i < inputLine; i++)
+            {
+                var tokens = Console.ReadLine()
+                    .Split(new char[] { ' ' }, StringSplitOptions.RemoveEmptyEntries);
+
+                var continent = tokens[0];
+                var country = tokens[1];
+                var city = tokens[2];
+
+                if (! continentData.ContainsKey(continent))
+                {
+                    continentData[continent] = 
+                        new SortedDictionary<string, SortedSet<string>>();
+                }
+
+                if (! continentData[continent].ContainsKey(country))
+                {
+                    continentData[continent][country] = new SortedSet<string>();
+                }
+
+                continentData[continent][country].Add(city);
+            }
+
+            Console.WriteLine();
+            foreach (var continent in continentData)
+            {
+                Console.WriteLine($"{continent.Key}:");
+
+                foreach (var kvp in continent.Value)
+                {
+                    Console.WriteLine($"    {kvp.Key} -> {string.Join(", ", kvp.Value)}");
+                }
+            }
+            Console.WriteLine();
+        }
+
+        private static void RecordUniqueNames()
+        {
+            var names = new HashSet<string>();
+            var sortedNames = new SortedSet<string>();
+            var linesOfInput = int.Parse(Console.ReadLine());
+
+            for (int i = 0; i < linesOfInput; i++)
+            {
+                var token = Console.ReadLine();
+
+                names.Add(token);
+                sortedNames.Add(token);
+            }
+
+            Console.WriteLine("===== OUTPUT =====");
+            Console.WriteLine(string.Join(Environment.NewLine, names));
+
+            Console.WriteLine("===== SORTED =====");
+            Console.WriteLine(string.Join(Environment.NewLine, sortedNames));
+
         }
 
         private static void NestedDictionary()
