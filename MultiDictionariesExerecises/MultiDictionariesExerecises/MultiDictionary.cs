@@ -17,11 +17,111 @@ namespace MultiDictionariesExerecises
             //RecordUniqueNames();
             //GroupContinentsCounriesAndCities();
             //ShellBound();
+            //DictRefAdvanced();
+            //ForumTopics();       
 
-            
-
+                        
             //NestedDictionary();
             //FillDictionary();
+        }
+
+        private static void ForumTopics()
+        {
+            var forumTopics = new Dictionary<string, HashSet<string>>();
+            var line = Console.ReadLine();
+
+            while (! line.Equals("filter"))
+            {
+                var tokens = line.Split(new string[] { "->" },
+                    StringSplitOptions.RemoveEmptyEntries);
+                var topic = tokens[0];
+                var tags = tokens[1].Split(new char[] { ',', ' ' }, 
+                    StringSplitOptions.RemoveEmptyEntries);
+
+                if (! forumTopics.ContainsKey(topic))
+                {
+                    forumTopics[topic] = new HashSet<string>();
+                }
+
+                foreach (var tag in tags)
+                {
+                    forumTopics[topic].Add(tag);
+                }
+
+                line = Console.ReadLine();
+            }
+            var filters = Console.ReadLine().Split(new char[] { ',' },
+                StringSplitOptions.RemoveEmptyEntries);
+
+            Console.WriteLine();
+            foreach (var item in forumTopics)
+            {
+                foreach (var filter in filters)
+                {
+                    if (! item.Value.Contains(filter))
+                    {
+                        break;
+                    }
+                    Console.WriteLine("{0} | #{1}", item.Key, string.Join(", #", item.Value));
+                }               
+                
+            }
+
+            Console.WriteLine();
+        }
+
+        private static void DictRefAdvanced()
+        {
+            var notesByName = new Dictionary<string, List<int>>();
+            var line = Console.ReadLine();
+            
+            while (! line.Equals("end"))
+            {
+                var tokens = line.Split(new string[] { " -> " }, 
+                    StringSplitOptions.RemoveEmptyEntries);
+
+                var name = tokens[0];
+                var input = tokens[1].Split(new char[] { ',', ' ' },
+                    StringSplitOptions.RemoveEmptyEntries);
+
+                bool isName = false;
+
+                if (input.Length == 1)
+                {
+                    var otherKey = input[0];
+
+                    if (notesByName.ContainsKey(otherKey))
+                    {
+                        notesByName[name] = notesByName[otherKey];
+                        isName = true;
+                    }
+                    
+                    
+                }
+                
+                var notes = 0;
+                
+                if (! notesByName.ContainsKey(name) && ! isName)
+                {
+                    notesByName[name] = new List<int>();
+                }
+
+                foreach (var item in input)
+                {
+                    if (int.TryParse(item, out notes))
+                    {
+                        notesByName[name].Add(notes);
+                    }
+                }
+                                
+                line = Console.ReadLine();
+            }
+
+            foreach (var item in notesByName)
+            {
+                Console.WriteLine($"{item.Key} === {string.Join(", ", item.Value)}");
+            }
+
         }
 
         private static void ShellBound()
