@@ -18,11 +18,132 @@ namespace MultiDictionariesExerecises
             //GroupContinentsCounriesAndCities();
             //ShellBound();
             //DictRefAdvanced();
-            //ForumTopics();       
-
-                        
+            //ForumTopics();             
+            //SocialPosts();
+            //PrintNestedDictionary();
             //NestedDictionary();
             //FillDictionary();
+        }
+
+        private static void PrintNestedDictionary()
+        {
+            var names = new Dictionary<string, Dictionary<string, string>>();
+
+            names["klas"] = new Dictionary<string, string>();
+            names["klas"]["grupC"] = "Ivan Ivanov";
+            names["klas"]["grupB"] = "Stoqn Stoqnov";
+            names["klas"]["grupA"] = "Petko Petkov";
+
+            foreach (var item in names)
+            {
+                foreach (var innerItem in item.Value)
+                {
+                    Console.WriteLine("{0} -> {1} , {2}", item.Key, innerItem.Key, innerItem.Value);
+                }
+            }
+        }
+
+        private static void SocialPosts()
+        {
+            var postBase = new Dictionary<string, Dictionary<string, string>>();
+            var postCounter = new Dictionary<string, List<int>>();
+
+            var line = Console.ReadLine();
+
+            while (line != "drop the media")
+            {
+                var tokens = line.Split(' ');
+                var command = tokens[0];
+                var post = tokens[1];
+
+                switch (command)
+                {
+                    case "post":
+
+                        if (! postBase.ContainsKey(post))
+                        {
+                            postBase[post] = new Dictionary<string, string>();
+                        }
+                        if (!postCounter.ContainsKey(post))
+                        {
+                            postCounter[post] = new List<int>();
+                        }
+                        postCounter[post].Add(0);
+                        postCounter[post].Add(0);
+
+                        break;
+                    case "like":
+                                                
+                        postCounter[post][0] += 1;
+                        
+                        break;
+                    case "dislike":
+                                                                        
+                        postCounter[post][1] += 1;
+                        
+                        break;
+                    case "comment":
+                                                
+                        var postName = tokens[1];
+                        var postCommentator = tokens[2];
+                        var postComment = tokens[3];
+
+                        if (! postBase.ContainsKey(postName))
+                        {
+                            postBase[postName] = new Dictionary<string, string>();
+                        }
+
+                        postBase[postName][postCommentator] = postComment;
+
+                        break;
+                    default:
+                        Console.WriteLine("Not a valid input");
+                        break;
+                }
+
+                line = Console.ReadLine();
+            }
+
+            Console.WriteLine();
+
+            foreach (var post in postBase)
+            {
+                var postName = post.Key;
+
+                Console.WriteLine($"Post: {postName} | Likes: {string.Join("", postCounter[postName][0])} " +
+                    $"| Dislikes: {string.Join("", postCounter[postName][1])}");
+
+                Console.WriteLine("Comments:");
+                                
+                foreach (var comment in post.Value)
+                {
+                    
+                    Console.WriteLine($"*  {comment.Key}: {string.Join("", comment.Value)}");
+                }
+
+
+                Console.WriteLine();
+            }
+
+            Console.WriteLine();
+        }               
+
+        public static void CreatePost(Dictionary<string, Dictionary<string, string>> posts, string postName)
+        {
+            if (!posts.ContainsKey(postName))
+            {
+                posts[postName] = new Dictionary<string, string>();
+            }
+            
+        }
+
+        public static void Counter(Dictionary<string, List<int>> commentsCounter, string postName)
+        {            
+            if (!commentsCounter.ContainsKey(postName))
+            {
+                commentsCounter[postName] = new List<int>();
+            }
+            commentsCounter[postName].Add(0);
         }
 
         private static void ForumTopics()
