@@ -4,6 +4,7 @@ namespace LinqExcercises
     using System;
     using System.Linq;
     using System.Collections.Generic;
+    using System.Globalization;
 
     public class LinqTest
     {
@@ -15,9 +16,49 @@ namespace LinqExcercises
             //LargestNNumbers();
             //ShortWordsSorted();
             //FoldAndSum();
+            RegisteredUsers();
+
+            
             
 
             Console.WriteLine();
+        }
+
+        private static void RegisteredUsers()
+        {
+            var userRegistryDate = new Dictionary<string, DateTime>();
+            var line = Console.ReadLine();
+
+            while (line != "end")
+            {
+                var tokens = line.Split(' ');
+                var userName = tokens[0];
+                var format = "dd/MM/yyyy";
+                var registryDate = DateTime.ParseExact(tokens[2], format,
+                    CultureInfo.InvariantCulture);
+
+                if (! userRegistryDate.ContainsKey(userName))
+                {
+                    userRegistryDate[userName] = registryDate;
+                }
+
+                userRegistryDate[userName] = registryDate;
+
+                line = Console.ReadLine();
+            }
+
+            userRegistryDate = userRegistryDate
+                .OrderByDescending(x => x.Value)
+                .OrderBy(x => x.Value)
+                .Take(5)
+                .ToDictionary(x => x.Key, x => x.Value);
+
+            Console.WriteLine();
+
+            foreach (var kvp in userRegistryDate)
+            {
+                Console.WriteLine("{0}", kvp.Key);
+            }
         }
 
         private static void FoldAndSum()
