@@ -18,11 +18,124 @@ namespace LinqExcercises
             //FoldAndSum();
             //RegisteredUsers();
             //DefaultValues();
-
-            
+            //FlattenDictionary();
+            //OrderedBankingSystem();                    
             
 
             Console.WriteLine();
+        }
+
+        private static void OrderedBankingSystem()
+        {
+            var bankAccountData = new Dictionary<string, Dictionary<string, decimal>>();
+
+            var line = Console.ReadLine();
+
+            while (line != "end")
+            {
+                var tokens = line.Split(new string[] { " -> " }, 
+                    StringSplitOptions.RemoveEmptyEntries);
+
+                var bankName = tokens[0];
+                var account = tokens[1];
+                decimal balance = decimal.Parse(tokens[2]);
+
+                if (! bankAccountData.ContainsKey(bankName))
+                {
+                    bankAccountData[bankName] = new Dictionary<string, decimal>();
+                }
+                if (! bankAccountData[bankName].ContainsKey(account))
+                {
+                    bankAccountData[bankName][account] = balance;
+                }
+                else
+                {
+                    bankAccountData[bankName][account] += balance;
+                }
+                
+
+                line = Console.ReadLine();
+            }
+
+            foreach (var kvp in bankAccountData.OrderBy(x => x.Key))
+            {
+                foreach (var item in kvp.Value.OrderByDescending(x => x.Value))
+                {
+                    Console.WriteLine($"{item.Key} has {item.Value} in {kvp.Key}");
+                }
+            }
+
+        }
+
+        private static void FlattenDictionary()
+        {
+            var dictionary = new Dictionary<string, Dictionary<string, string>>();
+
+            var line = Console.ReadLine();
+
+            while (! line.Equals("end"))
+            {
+                var inputParams = line.Split(new[] { ' ' },
+                    StringSplitOptions.RemoveEmptyEntries);
+
+                if (inputParams[0] != "flatten")
+                {
+                    var key = inputParams[0];
+                    var innerKey = inputParams[1];
+                    var innerValue = inputParams[2];
+
+                    if (!dictionary.ContainsKey(key))
+                    {
+                        dictionary[key] = new Dictionary<string, string>();
+                    }
+
+                    dictionary[key][innerKey] = innerValue;
+                }
+                else
+                {
+                    var key = inputParams[1];
+
+
+                    // make new dictionary with key: KEY + VALUE from the old one, and value: "flattened" 
+                    dictionary[key] = dictionary[key]
+                        .ToDictionary(x => x.Key + x.Value, x => "flattened");
+                }
+
+                line = Console.ReadLine();
+            }
+
+            //primery KEYs in descending order
+            var orderedDictionary = dictionary
+                .OrderByDescending(x => x.Key.Length)
+                .ToDictionary(x => x.Key, x => x.Value);
+
+            foreach (var kvp in orderedDictionary)
+            {
+                Console.WriteLine("{0}", kvp.Key);
+
+                var orderedInnerDictionary = kvp.Value
+                    .Where(x => x.Value != "flattened")
+                    .OrderBy(x => x.Key.Length)
+                    .ToDictionary(x => x.Key, x => x.Value);
+
+                var flattenedValues = kvp.Value
+                    .Where(x => x.Value == "flattened")
+                    .ToDictionary(x => x.Key, x => x.Value);
+
+                var count = 1;
+
+                foreach (var innerKvp in orderedInnerDictionary)
+                {
+                    Console.WriteLine($"{count}. {innerKvp.Key} - {innerKvp.Value}");
+                    count++;
+                }
+
+                foreach (var flattened in flattenedValues)
+                {
+                    Console.WriteLine("{0}. {1}",count , flattened.Key);
+                    count++;
+                }
+            }
         }
 
         private static void DefaultValues()
