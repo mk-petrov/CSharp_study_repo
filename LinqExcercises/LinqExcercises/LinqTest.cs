@@ -16,12 +16,56 @@ namespace LinqExcercises
             //LargestNNumbers();
             //ShortWordsSorted();
             //FoldAndSum();
-            RegisteredUsers();
+            //RegisteredUsers();
+            //DefaultValues();
 
             
             
 
             Console.WriteLine();
+        }
+
+        private static void DefaultValues()
+        {
+            var baseDictionary = new Dictionary<string, string>();
+
+            var line = Console.ReadLine();
+
+            while (!line.Equals("end"))
+            {
+                var tokens = line.Split(new[] { ' ', '-', '>' },
+                    StringSplitOptions.RemoveEmptyEntries);
+
+                var key = tokens[0];
+                var value = tokens[1];
+
+                baseDictionary[key] = value;
+
+                line = Console.ReadLine();
+            }
+            
+            var defaultValue = Console.ReadLine();
+
+            var unchangedBaseDict = baseDictionary
+                .Where(x => x.Value != "null")
+                .OrderByDescending(x => x.Value.Length)
+                .ToDictionary(x => x.Key, x => x.Value);
+
+            var changedBaseDict = baseDictionary
+                .Where(x => x.Value == "null")
+                .ToDictionary(x => x.Key, x => defaultValue);
+
+
+            Console.WriteLine();
+            foreach (var kvp in unchangedBaseDict)
+            {
+                Console.WriteLine($"{kvp.Key} <-> {kvp.Value}");
+            }
+
+            foreach (var kvp in changedBaseDict)
+            {
+                Console.WriteLine($"{kvp.Key} <-> {kvp.Value}");
+            }
         }
 
         private static void RegisteredUsers()
@@ -31,31 +75,31 @@ namespace LinqExcercises
 
             while (line != "end")
             {
-                var tokens = line.Split(' ');
+                var tokens = line.Split(new[] { ' ', '-', '>' },
+                    StringSplitOptions.RemoveEmptyEntries);
+
                 var userName = tokens[0];
                 var format = "dd/MM/yyyy";
-                var registryDate = DateTime.ParseExact(tokens[2], format,
+                var registryDate = DateTime.ParseExact(tokens[1], format,
                     CultureInfo.InvariantCulture);
 
-                if (! userRegistryDate.ContainsKey(userName))
-                {
-                    userRegistryDate[userName] = registryDate;
-                }
+                //userRegistryDate.Add(userName, registryDate);  //only initialize, but dont update value
 
                 userRegistryDate[userName] = registryDate;
 
                 line = Console.ReadLine();
             }
 
-            userRegistryDate = userRegistryDate
-                .OrderByDescending(x => x.Value)
+            var orderdUsers = userRegistryDate
+                .Reverse()
                 .OrderBy(x => x.Value)
                 .Take(5)
+                .OrderByDescending(x => x.Value)
                 .ToDictionary(x => x.Key, x => x.Value);
 
             Console.WriteLine();
 
-            foreach (var kvp in userRegistryDate)
+            foreach (var kvp in orderdUsers)
             {
                 Console.WriteLine("{0}", kvp.Key);
             }
