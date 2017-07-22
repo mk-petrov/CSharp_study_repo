@@ -6,6 +6,7 @@ namespace ObjectsAndSimpleClasses
     using System.Collections.Generic;
     using System.Globalization;
     using System.Threading;
+    using System.Diagnostics;
 
     public class SimpleClasses
     {
@@ -13,10 +14,40 @@ namespace ObjectsAndSimpleClasses
         {
             //Thread.CurrentThread.CurrentCulture = CultureInfo.InvariantCulture;
 
+
+            //Every method represents a small problem
+            ObjectExample();
             //SimpleTime();
             //RandomNumbers();
 
             Console.WriteLine();
+        }
+
+        private static void ObjectExample()
+        {
+            var cat = new Cat();
+            cat.Name = "Saimon";
+            cat.Age = 2;
+            
+
+            if (cat.Age > 1)
+            {
+                cat.IsEaten = true;
+            }
+
+            Cat.Sleep();
+            Console.WriteLine(cat.IsEaten);
+
+            var secondCat = new Cat()
+            {
+                Name = "Kiro",
+                Color = "white",
+                Age = 3,
+                IsEaten = true                
+            };
+
+            Console.WriteLine(cat.SayHi());
+            Console.WriteLine(secondCat.SayHi());
         }
 
         private static void RandomNumbers()
