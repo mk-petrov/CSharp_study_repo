@@ -11,11 +11,77 @@ namespace SimpleObjects2
         {
             //Every method represents a small problem
 
+            //SalesReport();
+            //RectanglePosition();
             //ReadPoints();
             //ClosestTwoPoints();
             //GuessWords();
             //DistanceBetweenPoints();
 
+        }
+
+        private static void SalesReport()
+        {
+            var total = int.Parse(Console.ReadLine());
+            var result = new SortedDictionary<string, decimal>();
+
+            for (int i = 0; i < total; i++)
+            {
+                var currentSaleAsString = Console.ReadLine();
+                var currentSale = Sale.Parse(currentSaleAsString);
+
+                if (!result.ContainsKey(currentSale.Town))
+                {
+                    result[currentSale.Town] = 0;
+                }
+
+                result[currentSale.Town] += currentSale.Quantity * currentSale.Price;
+            }
+
+            foreach (var kvp in result)
+            {
+                Console.WriteLine($"{kvp.Key} -> {kvp.Value:f2}");
+            }
+
+        }
+
+        private static void RectanglePosition()
+        {
+            var firstRect = ReadRectangle();
+            var secondRect = ReadRectangle();
+
+            var result = firstRect.isInside(secondRect);
+
+            var printResult = result ? "Inside" : "Not inside";
+
+            Console.WriteLine(printResult);
+
+            //if (result)
+            //{
+            //    Console.WriteLine("Inside");
+            //}
+            //else
+            //{
+            //    Console.WriteLine("Not inside");
+            //}
+
+
+        }
+
+        public static Rectangle ReadRectangle()
+        {
+            var rectangleParts = Console.ReadLine()
+                .Split(' ')
+                .Select(int.Parse)
+                .ToArray();
+
+            return new Rectangle
+            {
+                Left = rectangleParts[0],
+                Top = rectangleParts[1],
+                Width = rectangleParts[2],
+                Height = rectangleParts[3]
+            };
         }
 
         public static Point ReadPoints()
