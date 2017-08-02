@@ -13,6 +13,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Animals", "Animals\Animals.
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Boxes", "Boxes\Boxes.csproj", "{2FA09F37-39FF-4A17-819B-4E68E26ED6E2}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Messages", "Messages\Messages.csproj", "{1242720F-AAA3-464A-8323-CCB0F227B514}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -39,6 +41,10 @@ Global
 		{2FA09F37-39FF-4A17-819B-4E68E26ED6E2}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{2FA09F37-39FF-4A17-819B-4E68E26ED6E2}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{2FA09F37-39FF-4A17-819B-4E68E26ED6E2}.Release|Any CPU.Build.0 = Release|Any CPU
+		{1242720F-AAA3-464A-8323-CCB0F227B514}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{1242720F-AAA3-464A-8323-CCB0F227B514}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{1242720F-AAA3-464A-8323-CCB0F227B514}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{1242720F-AAA3-464A-8323-CCB0F227B514}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
