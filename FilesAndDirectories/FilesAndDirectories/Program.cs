@@ -9,8 +9,7 @@ namespace FilesAndDirectories
         public static void Main()
         {
             //PrintDirectoriesAndFilesInIt();
-
-
+                        
         }
 
         private static void PrintDirectoriesAndFilesInIt()
