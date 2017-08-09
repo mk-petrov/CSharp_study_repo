@@ -13,11 +13,29 @@ namespace LabFiles
             //ReadFileAndWriteFile();
             //LineNumbers();
             //WordCount();
-            MergeFiles();
+            //MergeFiles();
+            //FolderSize();
 
         }
 
-        private static void MergeFiles()
+        public static void FolderSize()
+        {
+            string[] files = Directory.GetFiles("../../Resources/05. Folder Size/TestFolder");
+            double sum = 0;
+
+            foreach (var file in files)
+            {
+                var fileInfo = new FileInfo(file);
+                sum += fileInfo.Length;
+            }
+
+            var sumInMegaBytes = sum / 1024 / 1024;
+
+            File.WriteAllText("05.Output.txt", sumInMegaBytes.ToString());
+
+        }
+
+        public static void MergeFiles()
         {
             try
             {
@@ -26,6 +44,8 @@ namespace LabFiles
                 string[] fileTwo = File.ReadAllLines("../../Resources/04. Merge Files/FileTwo.txt");
 
                 string[] result = fileOne.Concat(fileTwo).OrderBy(x => x).ToArray();
+
+                //var result1 = fileOne.Union(fileTwo).ToArray();
 
                 File.AppendAllLines("04.Output.txt", result);
                 
