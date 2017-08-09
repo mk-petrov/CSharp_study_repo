@@ -12,6 +12,90 @@ namespace LabFiles
         {
             //ReadFileAndWriteFile();
             //LineNumbers();
+            //WordCount();
+            MergeFiles();
+
+        }
+
+        private static void MergeFiles()
+        {
+            try
+            {
+                string[] fileOne = File.ReadAllLines("../../Resources/04. Merge Files/FileOne.txt");
+
+                string[] fileTwo = File.ReadAllLines("../../Resources/04. Merge Files/FileTwo.txt");
+
+                string[] result = fileOne.Concat(fileTwo).OrderBy(x => x).ToArray();
+
+                File.AppendAllLines("04.Output.txt", result);
+                
+            }            
+            catch (FileNotFoundException)
+            {
+                Console.WriteLine(" *** File doesn't exists. ***");
+            }
+            catch (DirectoryNotFoundException)
+            {
+                Console.WriteLine(" *** Directory doesn't exists. ***");
+            }
+
+
+        }
+
+        public static void WordCount()
+        {
+            try
+            {
+                var words = File.ReadAllText("../../Resources/03. Word Count/words.txt")
+                    .ToLower()
+                    .Split(' ')
+                    .ToArray();
+
+                var content = File.ReadAllText("../../Resources/03. Word Count/text.txt")
+                    .ToLower()
+                    .Split(new[] { '\n', '\r', ' ', '.', ',', '!', '?', '-' }, StringSplitOptions.RemoveEmptyEntries)
+                    .ToArray();
+
+                var result = new Dictionary<string, int>();
+                    
+
+                for (int i = 0; i < words.Length; i++)
+                {
+                    var currentWord = words[i];
+                    var counter = 0;
+
+                    for (int j = 0; j < content.Length; j++)
+                    {
+                        if (currentWord == content[j])
+                        {
+                            counter++;
+                        }
+                    }
+
+                    result[currentWord] = counter;
+
+                    //if (! content.Contains(currentWord))
+                    //{
+                    //    result[currentWord] = 0;
+                    //}
+                }
+
+                foreach (var kvp in result.OrderByDescending(x => x.Value))
+                {
+                    var line = kvp.Key + " - " + kvp.Value;
+                    File.AppendAllText("03.Output.txt", line + Environment.NewLine);
+                }
+
+
+            }
+            catch (FileNotFoundException)
+            {
+                Console.WriteLine(" *** File doesn't exists. ***");
+            }
+            catch (DirectoryNotFoundException)
+            {
+                Console.WriteLine(" *** Directory doesn't exists. ***");
+            }
 
 
         }
