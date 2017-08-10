@@ -9,6 +9,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "StudentsData", "StudentsDat
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "LabFiles", "LabFiles\LabFiles.csproj", "{75CF7927-AA9C-4584-B59F-ED8A00902FE6}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "FilterExtensions", "FilterExtentions\FilterExtensions.csproj", "{199BECC3-B35A-41BE-B68B-A95C6E2180BC}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -27,6 +29,10 @@ Global
 		{75CF7927-AA9C-4584-B59F-ED8A00902FE6}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{75CF7927-AA9C-4584-B59F-ED8A00902FE6}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{75CF7927-AA9C-4584-B59F-ED8A00902FE6}.Release|Any CPU.Build.0 = Release|Any CPU
+		{199BECC3-B35A-41BE-B68B-A95C6E2180BC}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{199BECC3-B35A-41BE-B68B-A95C6E2180BC}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{199BECC3-B35A-41BE-B68B-A95C6E2180BC}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{199BECC3-B35A-41BE-B68B-A95C6E2180BC}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

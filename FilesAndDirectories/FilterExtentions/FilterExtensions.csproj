@@ -4,10 +4,10 @@
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProjectGuid>{75CF7927-AA9C-4584-B59F-ED8A00902FE6}</ProjectGuid>
+    <ProjectGuid>{199BECC3-B35A-41BE-B68B-A95C6E2180BC}</ProjectGuid>
     <OutputType>Exe</OutputType>
-    <RootNamespace>LabFiles</RootNamespace>
-    <AssemblyName>LabFiles</AssemblyName>
+    <RootNamespace>FilterExtentions</RootNamespace>
+    <AssemblyName>FilterExtentions</AssemblyName>
     <TargetFrameworkVersion>v4.5.2</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>
@@ -42,7 +42,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="LabFiles.cs" />
+    <Compile Include="FilterExtensions.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
