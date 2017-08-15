@@ -19,15 +19,19 @@ namespace Products
             //“Food”, “Electronics”, “Domestics”.
 
             //LOAD DATA FROM DATABASE
-            string[] products = File.ReadAllLines(dbPath);
-
-            foreach (var product in products)
+            if (File.Exists(dbPath))
             {
-                var productParts = product.Split(' ', '|');
-                var name = productParts[0];
-                var type = productParts[1];
-                
-                database[productParts[0]]
+                string[] products = File.ReadAllLines(dbPath);
+
+                foreach (var product in products)
+                {
+                    var productParts = product.Split(' ');
+                    
+                    var newProduct = Product.Parse(productParts);
+
+                    database[newProduct.Name] = newProduct;
+
+                }
             }
 
             var line = Console.ReadLine();
@@ -39,17 +43,7 @@ namespace Products
                 if (input.Length > 1)
                 {
                     var newProduct = Product.Parse(input);
-
-                    //if ( database.ContainsKey(newProduct.Name))
-                    //{
-                    //    if (database[newProduct.Name].Type == input[1])
-                    //    {
-                    //        database[newProduct.Name].Price = decimal.Parse(input[2]);
-                    //        database[newProduct.Name].Quantity = int.Parse(input[3]);
-                    //    }
-                         
-                    //}
-
+                    
                     database[newProduct.Name] = newProduct;
                 }
                 else
@@ -58,13 +52,13 @@ namespace Products
                     switch (input[0])
                     {
                         case "sales":
-
+                            Sales();
                             break;
                         case "stock":
                             StockDatabase();
                             break;
                         case "analyze":
-
+                            Analyze();
                             break;
                     }
                 }
@@ -73,6 +67,71 @@ namespace Products
             }
 
 
+        }
+
+        private static void Sales()
+        {
+            var sumOfProducts = new Dictionary<string, decimal>();
+
+            sumOfProducts["Electronics"] = 0;
+            sumOfProducts["Food"] = 0;
+            sumOfProducts["Domestics"] = 0;
+
+            foreach (var product in database)
+            {
+                var typeOfProduct = product.Value.Type;
+                                                                
+                switch (typeOfProduct)
+                {
+                    case "Electronics":
+                        sumOfProducts["Electronics"] += product.Value.Quantity * product.Value.Price;                        
+                        break;
+                    case "Food":
+                        sumOfProducts["Food"] += product.Value.Quantity * product.Value.Price;
+                        break;
+                    case "Domestics":
+                        sumOfProducts["Domestics"] += product.Value.Quantity * product.Value.Price;
+                        break;
+                }
+                
+            }
+
+            foreach (var sum in sumOfProducts.OrderByDescending(x => x.Value))
+            {
+                if (sum.Value != 0)
+                {
+                    Console.WriteLine($"{sum.Key}: ${sum.Value}");
+                }
+                else
+                {
+                    Console.WriteLine("No products stocked");
+                }
+                
+            }
+        }
+
+        private static void Analyze()
+        {
+            if (File.Exists(dbPath))
+            {
+                string[] products = File.ReadAllLines(dbPath);
+                var tempDatabase = new Dictionary<string, Product>();
+                                
+                foreach (var product in products)
+                {
+                    var productParts = product.Split(' ');
+                    var newProduct = Product.Parse(productParts);
+
+                    tempDatabase[newProduct.Name] = newProduct;                                        
+                }
+
+                foreach (var tempProduct in tempDatabase.OrderBy(x => x.Value.Type))
+                {
+                    Console.WriteLine($"{tempProduct.Value.Type}, Product: {tempProduct.Key}");
+                    Console.WriteLine($"Price: ${tempProduct.Value.Price:f2}, Amount Left: {tempProduct.Value.Quantity}");
+
+                }
+            }            
         }
 
         private static void StockDatabase()
@@ -85,7 +144,7 @@ namespace Products
 
             foreach (var data in database)
             {
-                File.AppendAllLines(dbPath,new[] { $"{data.Key} | {data.Value.Type} | {data.Value.Price} | {data.Value.Quantity}" });
+                File.AppendAllLines(dbPath,new[] { $"{data.Key} {data.Value.Type} {data.Value.Price} {data.Value.Quantity}" });
             }
         }
     }
