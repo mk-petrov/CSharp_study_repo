@@ -4,15 +4,41 @@ namespace StringsAndText
     using System;
     using System.Text;
     using System.Diagnostics;
+    using System.Linq;
+    using System.Collections.Generic;
 
     public class Strings
     {
         public static void Main()
         {
+            Palindromes();
             //CountSubstringOccurrences();
             //TextFilter();
             //TestStringBuilderSpeed();
             //StringReverse();
+        }
+
+        private static void Palindromes()
+        {
+            var text = Console.ReadLine()
+                .Split(new[] { '.', ',', ':', ';', '(', ')', '[', ']', '\"', '\'', '\\', '/', '!', '?', ' ' },
+                StringSplitOptions.RemoveEmptyEntries);
+
+            var palindromes = new SortedSet<string>();
+
+            foreach (var word in text)
+            {
+                var reversedWord = word.Reverse().ToArray();
+                
+                if (word == string.Join("", reversedWord))
+                {
+                    palindromes.Add(word);
+                }
+
+            }
+
+            Console.WriteLine(string.Join(", ", palindromes));
+
         }
 
         private static void StringReverse()
