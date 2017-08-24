@@ -10,14 +10,14 @@ namespace StringsAndText
     public class Strings
     {
         public static void Main()
-        {
-            Palindromes();
+        {            
+            //Palindromes();
             //CountSubstringOccurrences();
             //TextFilter();
             //TestStringBuilderSpeed();
             //StringReverse();
         }
-
+        
         private static void Palindromes()
         {
             var text = Console.ReadLine()
