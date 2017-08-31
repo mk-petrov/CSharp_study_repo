@@ -12,18 +12,24 @@ namespace Placeholders
             while (line != "end")
             {
                 var inputParams = line
-                    .Split(new string[] { "->" },
+                    .Split(new[] { '-', '>' },
                     StringSplitOptions.RemoveEmptyEntries);
 
-                var lineToPrint = inputParams[0];
+                var lineToPrint = inputParams[0].Trim();
 
-                var placeholders = inputParams[1]
+                var placeholders = inputParams[1].Trim()
                     .Split(new[] { ',', ' ' },
                     StringSplitOptions.RemoveEmptyEntries);
-                               
 
-                Console.WriteLine(lineToPrint, placeholders[0], placeholders[1]);
-                
+                for (int i = 0; i < placeholders.Length; i++)
+                {
+                    string currentPlaceholder = "{" + i + "}";
+
+                    lineToPrint = lineToPrint.Replace(currentPlaceholder, placeholders[i]);
+                }
+
+                Console.WriteLine(lineToPrint);
+
                 line = Console.ReadLine();
             }
         }
