@@ -15,18 +15,30 @@ namespace JSON_stringify
             var line = Console.ReadLine();
 
             while (line != "stringify")
-            {
-                var inputParams = line.Split(new[] { ' ', ':', '-', '>', ',' },
-                    StringSplitOptions.RemoveEmptyEntries);
+            {                
+                var newStudent = Student.Parse(line);
 
-                var name = inputParams[0];
-                var age = inputParams[1];
-                var name = inputParams[0];
-                var name = inputParams[0];
+                studentsBase[newStudent.Name] = newStudent;
 
                 line = Console.ReadLine();
             }
 
+            Console.Write("[");
+
+            foreach (var kvp in studentsBase)
+            {
+                var currentStudent = "{name:\"" + kvp.Key + "\",age:" + kvp.Value.Age +
+                    ",grades:[" + string.Join(", ", kvp.Value.Grades) + "]}";
+
+                Console.Write(string.Join(", ", currentStudent));
+
+                //Console.Write("{name:\"" + kvp.Key + "\",age:" + kvp.Value.Age +
+                //    ",grades:[" + string.Join(", ", kvp.Value.Grades) + "]}");
+
+            }
+
+            Console.Write("]");
+            Console.WriteLine();
         }
     }
 }
