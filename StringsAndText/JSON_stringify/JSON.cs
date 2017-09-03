@@ -14,8 +14,26 @@ namespace JSON_stringify
 
             var line = Console.ReadLine();
 
+            //line = ToJSON(studentsBase, line);    //ENABLE FROM STRING TO JSON METHOD
+
+            var info = line.Trim('{', '}').Split(':', ',');
+            //.Trim('{', '}', '"', ':', '[', ']')
+
+            var name = info[1].Trim('"');     // name|"Ivan"|age|28|grades|[2| 2| 3]
+            var age = int.Parse(info[3]);
+            var grades = info.Skip(5).ToArray();
+            grades = grades.Trim('[', ']');
+
+            Console.WriteLine(string.Join("|", info));
+            Console.WriteLine(name + " is " + age);
+            Console.WriteLine("grades: "+ string.Join("", grades));
+
+        }
+
+        private static string ToJSON(Dictionary<string, Student> studentsBase, string line)
+        {
             while (line != "stringify")
-            {                
+            {
                 var newStudent = Student.Parse(line);
 
                 studentsBase[newStudent.Name] = newStudent;
@@ -39,6 +57,7 @@ namespace JSON_stringify
 
             Console.Write("]");
             Console.WriteLine();
+            return line;
         }
     }
 }
