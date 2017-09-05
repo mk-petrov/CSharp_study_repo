@@ -22,7 +22,7 @@ namespace JSON_stringify
             var name = info[1].Trim('"');     // name|"Ivan"|age|28|grades|[2| 2| 3]
             var age = int.Parse(info[3]);
             var grades = info.Skip(5).ToArray();
-            grades = grades.Trim('[', ']');
+            //grades = grades.Trim('[', ']');
 
             Console.WriteLine(string.Join("|", info));
             Console.WriteLine(name + " is " + age);
