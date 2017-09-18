@@ -11,6 +11,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ReplaceATag", "ReplaceAtag\
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Cards", "Cards\Cards.csproj", "{75F7AEE3-9A8E-4A90-816E-EDA80AA2D30F}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "FishStatistics", "FishStatistics\FishStatistics.csproj", "{CDF302DC-8E96-4E85-85D1-9632266C7E4A}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -33,6 +35,10 @@ Global
 		{75F7AEE3-9A8E-4A90-816E-EDA80AA2D30F}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{75F7AEE3-9A8E-4A90-816E-EDA80AA2D30F}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{75F7AEE3-9A8E-4A90-816E-EDA80AA2D30F}.Release|Any CPU.Build.0 = Release|Any CPU
+		{CDF302DC-8E96-4E85-85D1-9632266C7E4A}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{CDF302DC-8E96-4E85-85D1-9632266C7E4A}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{CDF302DC-8E96-4E85-85D1-9632266C7E4A}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{CDF302DC-8E96-4E85-85D1-9632266C7E4A}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
