@@ -7,6 +7,10 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ExamPreparation_ProgramingF
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SoftUni_Karaoke", "SoftUni_Karaoke\SoftUni_Karaoke.csproj", "{2A77B26F-8F08-4DDD-A3B2-047A5809C184}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "EnduranceRally", "EnduranceRally\EnduranceRally.csproj", "{9B55B99F-3FA9-43E8-967D-A49341853257}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Winning_Ticket", "Winning_Ticket\Winning_Ticket.csproj", "{D474FA81-8B9E-432A-BAB1-C690E294AE5F}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -21,6 +25,14 @@ Global
 		{2A77B26F-8F08-4DDD-A3B2-047A5809C184}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{2A77B26F-8F08-4DDD-A3B2-047A5809C184}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{2A77B26F-8F08-4DDD-A3B2-047A5809C184}.Release|Any CPU.Build.0 = Release|Any CPU
+		{9B55B99F-3FA9-43E8-967D-A49341853257}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{9B55B99F-3FA9-43E8-967D-A49341853257}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{9B55B99F-3FA9-43E8-967D-A49341853257}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{9B55B99F-3FA9-43E8-967D-A49341853257}.Release|Any CPU.Build.0 = Release|Any CPU
+		{D474FA81-8B9E-432A-BAB1-C690E294AE5F}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{D474FA81-8B9E-432A-BAB1-C690E294AE5F}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{D474FA81-8B9E-432A-BAB1-C690E294AE5F}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{D474FA81-8B9E-432A-BAB1-C690E294AE5F}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
