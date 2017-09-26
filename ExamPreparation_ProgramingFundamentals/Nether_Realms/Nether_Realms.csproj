@@ -42,6 +42,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Demon.cs" />
     <Compile Include="Nether_Realms.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
