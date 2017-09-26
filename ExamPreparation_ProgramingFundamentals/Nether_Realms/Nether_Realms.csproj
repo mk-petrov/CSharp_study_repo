@@ -4,10 +4,10 @@
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProjectGuid>{76D07516-B790-40BB-A177-E617C37B0C8B}</ProjectGuid>
+    <ProjectGuid>{02573C7F-D29A-4331-B3F4-9BBD9CFFDC8C}</ProjectGuid>
     <OutputType>Exe</OutputType>
-    <RootNamespace>Charity_Marathon</RootNamespace>
-    <AssemblyName>Charity_Marathon</AssemblyName>
+    <RootNamespace>Nether_Realms</RootNamespace>
+    <AssemblyName>Nether_Realms</AssemblyName>
     <TargetFrameworkVersion>v4.5.2</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>
@@ -42,7 +42,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Marathon.cs" />
+    <Compile Include="Nether_Realms.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>

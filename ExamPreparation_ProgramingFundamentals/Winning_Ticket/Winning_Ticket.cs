@@ -36,7 +36,17 @@ namespace Winning_Ticket
 
                 if (leftMatch.Success && rightMatch.Success)
                 {
+                    var winningSymbol = leftMatch.Value[0];
+                    var shorterMatch = Math.Min(leftMatch.Length, rightMatch.Length);
+                    var jackpot = string.Empty;
 
+                    if (shorterMatch == 10)
+                    {
+                        jackpot = " Jackpot!";
+                    }
+
+
+                    Console.WriteLine($"ticket \"{ticket}\" - {shorterMatch}{winningSymbol}{jackpot}");
                 }
                 else
                 {
