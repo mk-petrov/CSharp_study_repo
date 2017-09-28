@@ -11,11 +11,13 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "EnduranceRally", "Endurance
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Winning_Ticket", "Winning_Ticket\Winning_Ticket.csproj", "{D474FA81-8B9E-432A-BAB1-C690E294AE5F}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Charity_Marathon", "Charity_Marathon\Charity_Marathon.csproj", "{76D07516-B790-40BB-A177-E617C37B0C8B}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "02_Charity_Marathon", "Charity_Marathon\02_Charity_Marathon.csproj", "{76D07516-B790-40BB-A177-E617C37B0C8B}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Ladybugs", "Ladybugs\Ladybugs.csproj", "{3FC86D2B-8570-4AF5-977D-941B63C7673D}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "02_Ladybugs", "Ladybugs\02_Ladybugs.csproj", "{3FC86D2B-8570-4AF5-977D-941B63C7673D}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Nether_Realms", "Nether_Realms\Nether_Realms.csproj", "{02573C7F-D29A-4331-B3F4-9BBD9CFFDC8C}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "02_Nether_Realms", "Nether_Realms\02_Nether_Realms.csproj", "{02573C7F-D29A-4331-B3F4-9BBD9CFFDC8C}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "02_Roli_The_Coder", "Roli_The_Coder\02_Roli_The_Coder.csproj", "{C9991009-C92F-480E-9ECE-2A82AE2A284B}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -51,6 +53,10 @@ Global
 		{02573C7F-D29A-4331-B3F4-9BBD9CFFDC8C}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{02573C7F-D29A-4331-B3F4-9BBD9CFFDC8C}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{02573C7F-D29A-4331-B3F4-9BBD9CFFDC8C}.Release|Any CPU.Build.0 = Release|Any CPU
+		{C9991009-C92F-480E-9ECE-2A82AE2A284B}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{C9991009-C92F-480E-9ECE-2A82AE2A284B}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{C9991009-C92F-480E-9ECE-2A82AE2A284B}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{C9991009-C92F-480E-9ECE-2A82AE2A284B}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
