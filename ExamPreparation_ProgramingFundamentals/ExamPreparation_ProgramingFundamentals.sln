@@ -19,6 +19,10 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "02_Nether_Realms", "Nether_
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "02_Roli_The_Coder", "Roli_The_Coder\02_Roli_The_Coder.csproj", "{C9991009-C92F-480E-9ECE-2A82AE2A284B}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "03_SoftUni_Coffee_Orders", "03_SoftUni_Coffee_Orders\03_SoftUni_Coffee_Orders.csproj", "{B060EA3E-B495-43A2-AFEF-D27F2FA94864}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "03_Command_Interpreter", "03_Command_Interpreter\03_Command_Interpreter.csproj", "{31A6512F-3BCB-40BF-86B7-1E1B70F010BE}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -57,6 +61,14 @@ Global
 		{C9991009-C92F-480E-9ECE-2A82AE2A284B}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{C9991009-C92F-480E-9ECE-2A82AE2A284B}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{C9991009-C92F-480E-9ECE-2A82AE2A284B}.Release|Any CPU.Build.0 = Release|Any CPU
+		{B060EA3E-B495-43A2-AFEF-D27F2FA94864}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{B060EA3E-B495-43A2-AFEF-D27F2FA94864}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{B060EA3E-B495-43A2-AFEF-D27F2FA94864}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{B060EA3E-B495-43A2-AFEF-D27F2FA94864}.Release|Any CPU.Build.0 = Release|Any CPU
+		{31A6512F-3BCB-40BF-86B7-1E1B70F010BE}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{31A6512F-3BCB-40BF-86B7-1E1B70F010BE}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{31A6512F-3BCB-40BF-86B7-1E1B70F010BE}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{31A6512F-3BCB-40BF-86B7-1E1B70F010BE}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
