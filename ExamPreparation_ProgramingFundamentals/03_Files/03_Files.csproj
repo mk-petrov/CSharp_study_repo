@@ -7,7 +7,7 @@
     <ProjectGuid>{3093E105-FB73-4893-97DA-164AD7F8C1A5}</ProjectGuid>
     <OutputType>Exe</OutputType>
     <RootNamespace>_03_Files</RootNamespace>
-    <AssemblyName>_03_Files</AssemblyName>
+    <AssemblyName>03_Files</AssemblyName>
     <TargetFrameworkVersion>v4.5.2</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>
@@ -42,7 +42,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Program.cs" />
+    <Compile Include="Files.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
