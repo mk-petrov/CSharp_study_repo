@@ -27,6 +27,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "03_Rage_Quit", "03_Rage_Qui
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "03_Files", "03_Files\03_Files.csproj", "{3093E105-FB73-4893-97DA-164AD7F8C1A5}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "04_Melrah_Shake", "04_Melrah_Shake\04_Melrah_Shake.csproj", "{C1DC764E-EF14-4463-9BE0-9B4B445C6FF9}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -81,6 +83,10 @@ Global
 		{3093E105-FB73-4893-97DA-164AD7F8C1A5}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{3093E105-FB73-4893-97DA-164AD7F8C1A5}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{3093E105-FB73-4893-97DA-164AD7F8C1A5}.Release|Any CPU.Build.0 = Release|Any CPU
+		{C1DC764E-EF14-4463-9BE0-9B4B445C6FF9}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{C1DC764E-EF14-4463-9BE0-9B4B445C6FF9}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{C1DC764E-EF14-4463-9BE0-9B4B445C6FF9}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{C1DC764E-EF14-4463-9BE0-9B4B445C6FF9}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
